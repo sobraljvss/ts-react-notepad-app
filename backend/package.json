@@ -1,0 +1,36 @@
+{
+	"name": "notepad-app-backend",
+	"version": "1.0.0",
+	"description": "Backend for notepad app",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"compile": "tsc && node server.js",
+		"watch-compile": "tsc -w",
+		"dev": "nodemon server.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/sobraljvss/ts-react-notepad-app.git"
+	},
+	"author": "João Vitor Sobral",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/sobraljvss/ts-react-notepad-app/issues"
+	},
+	"homepage": "https://github.com/sobraljvss/ts-react-notepad-app#readme",
+	"dependencies": {
+		"date-fns": "^3.2.0",
+		"dotenv": "^16.3.1",
+		"express": "^4.18.2",
+		"fs": "^0.0.1-security",
+		"path": "^0.12.7"
+	},
+	"devDependencies": {
+		"@types/express": "^4.17.21",
+		"@types/node": "^20.11.0",
+		"concurrently": "^8.2.2",
+		"nodemon": "^3.0.2",
+		"typescript": "^5.3.3"
+	}
+}
