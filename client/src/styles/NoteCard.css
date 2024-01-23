@@ -1,0 +1,22 @@
+.note-card {
+    margin: 10px;
+    padding: 10px;
+    height: 120px;
+    width: 200px;
+
+    border: 2px solid #2D2311;
+    border-radius: 20px 0;
+    background-color: #987C17;
+    box-shadow: 10px 10px black, inset 10px 10px 30px #caa727;
+
+    cursor: pointer;
+}
+
+li > .title {
+    font-size: calc(1em + 20%);
+    font-weight: 700;
+}
+
+li > .datetime {
+    font-size: calc(0.5em + 33%);
+}

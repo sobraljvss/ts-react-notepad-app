@@ -1,12 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import api from '../api/api';
 
-type Note = {
-	id: string;
-	title: string;
-	body: string;
-	postDatetime: string;
-};
+import '../styles/Notes.css';
+import { Note } from '../interfaces/interfaces';
+import NoteCard from './NoteCard';
 
 const Notes = () => {
 	const [fetchError, setFetchError] = useState<string | undefined>(undefined);
@@ -24,7 +21,9 @@ const Notes = () => {
 				});
 
 				if (!response?.data) throw new Error('No response from server');
-				else setNotes(response.data);
+				if (response?.status !== 200) throw new Error(response.data.message);
+				console.log(response.data);
+				setNotes(response.data);
 			} catch (err: any) {
 				setFetchError(err.message);
 			}
@@ -39,14 +38,13 @@ const Notes = () => {
 
 	return (
 		<>
-			{notes?.length &&
-				notes.map((note: Note, key: number) => (
-					<article key={key}>
-						<h2>{note.title}</h2>
-						<p>{note.postDatetime}</p>
-						<p>{note.body}</p>
-					</article>
-				))}
+			<dl className="all-notes">
+				{notes?.length ? (
+					notes.map((note: Note, key: number) => <NoteCard key={key} note={note} />)
+				) : (
+					<p>Write a note!</p>
+				)}
+			</dl>
 			{fetchError && <p className="error">{fetchError}</p>}
 		</>
 	);

@@ -1,0 +1,27 @@
+.expanded-note {
+    padding: 10px;
+    height: 80%;
+
+    background: none;
+    background-color: #987C17;
+
+    border: 2px solid #2D2311;
+    border-radius: 20px 0;
+    box-shadow: 10px 10px black, inset 10px 10px 30px #caa727;
+}
+
+.note-head {
+    height: 20%;
+}
+
+.note-body {
+    height: 80%;
+
+    white-space: pre-wrap;
+    overflow-y: auto;
+}
+
+h2 {
+    font-size: calc(1em + 2vh);
+    font-weight: 700;
+}

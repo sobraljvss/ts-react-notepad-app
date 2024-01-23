@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { Request, Response } from 'express';
 import { Note } from '../model/Note';
-import { v1 as uuid } from 'uuid';
+import { v4 as uuid } from 'uuid';
 import { format } from 'date-fns';
 
 type CRUDOperationType = (req: Request, res: Response) => Promise<Response>;
@@ -19,6 +19,7 @@ const notes: { data: Note[]; setData: (newData: Note[]) => void } = {
 			JSON.stringify({ Notes: newData }),
 			'utf-8'
 		);
+		notes.data = newData;
 	},
 };
 
@@ -54,16 +55,13 @@ export const createNote: CRUDOperationType = async (req: Request, res: Response)
 
 	try {
 		notes.setData([...notes.data, newNoteData]);
-		return res.sendStatus(201);
+		return res.status(201).json({ note: newNoteData });
 	} catch (err: any) {
 		return res.status(500).json({ message: `Failed to create note: ${err.message}` });
 	}
 };
 
 export const updateNote: CRUDOperationType = async (req: Request, res: Response) => {
-	if (!req?.body?.title || !req?.body?.body)
-		return res.status(400).json({ message: 'No data was given' });
-
 	if (!req?.body?.id && !req?.params?.id) {
 		return res.status(400).json({ message: 'No ID was given' });
 	} else if (req?.body?.id && req?.params?.id && req.body.id !== req.params.id) {

@@ -4,9 +4,25 @@ All notable changes to this project will be documented in this file.
 
 ## [unreleased]
 
+-   List creator
+-   Transitions
+-   Infinite scroll
+-   Better style on buttons
+
+## v0.3.0 - 2024-01-23
+
+### Added
+
 -   The main frontend pages
--   Styles for the pages
--   List creator?
+-   Basic style
+
+### Updated
+
+-   New names for main folders
+
+### Fixed
+
+-   Small bugs and problems on backend
 
 ## v0.2.0 - 2024-01-16
 

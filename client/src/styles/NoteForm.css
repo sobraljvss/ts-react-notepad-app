@@ -1,0 +1,55 @@
+.create-update-note-page {
+    height: 90%;
+}
+
+.note-create-update-form {
+    height: 95%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.note-create-update-form > div {
+    height: 100%;
+    margin-bottom: 20px;
+}
+
+textarea {
+    width: 100%;
+
+    white-space: pre-wrap;
+
+    border: transparent;
+    border-radius: 5px;
+    background-color: transparent;
+    color: inherit;
+    font-family: inherit;
+
+    resize: none;
+}
+
+textarea:focus {
+    outline: thin dotted;
+}
+
+textarea::placeholder {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #2D2311;
+}
+
+#title-box {
+    height: 10%;
+
+    overflow: auto hidden;
+
+    font-size: calc(1em + 2vh);
+    font-weight: 700;
+}
+
+#body-box {
+    height: 90%;
+
+    overflow-y: auto;
+
+    font-size: calc(0.5em + 1vh);
+}

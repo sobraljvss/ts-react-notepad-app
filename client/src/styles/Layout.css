@@ -1,0 +1,56 @@
+header {
+    height: 10%;
+
+    position: relative;
+    top: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #3C373B;
+}
+
+header > button {
+    position: absolute;
+    right: 10%;
+
+    border: none;
+    background-color: transparent;
+    color: white;
+
+    font-size: 4em;
+
+    cursor: pointer;
+}
+
+main {
+    height: calc(100vh - 20%);
+    padding: 20px;
+
+    background: linear-gradient(to top right, #454144, #6f686d);
+
+    overflow-y: auto;
+    scrollbar-track-color: aqua;
+}
+
+footer {
+    height: 10%;
+
+    position: relative;
+    bottom: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #3C373B;
+}
+
+header > h1, footer > p {
+    color: white;
+}
+
+.error {
+    color: red;
+}

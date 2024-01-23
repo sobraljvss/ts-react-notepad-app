@@ -1,12 +1,12 @@
 {
 	"name": "notepad-app-backend",
-	"version": "0.2.0",
+	"version": "1.1.0",
 	"description": "Backend for notepad app",
 	"main": "server.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"compile": "tsc && node server.js",
-		"dev": "concurrently \"tsc -w\" \"nodemon server.js\""
+		"dev": "concurrently \"tsc -w\" \"nodemon --ignore /logs server.js\""
 	},
 	"repository": {
 		"type": "git",

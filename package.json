@@ -1,0 +1,21 @@
+{
+	"name": "ts-react-notepad-app",
+	"version": "0.3.0",
+	"description": "A simple notepad app made with React and TypeScript",
+	"scripts": {
+		"dev": "concurrently \"npm --prefix \"./server\" run dev\" \"npm --prefix \"./client\" run dev\""
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/sobraljvss/ts-react-notepad-app.git"
+	},
+	"author": "João Vitor Sobral",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/sobraljvss/ts-react-notepad-app/issues"
+	},
+	"homepage": "https://github.com/sobraljvss/ts-react-notepad-app#readme",
+	"devDependencies": {
+		"concurrently": "^8.2.2"
+	}
+}

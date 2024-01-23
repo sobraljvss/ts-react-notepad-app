@@ -22,6 +22,7 @@ const notes = {
     data: JSON.parse(fs_1.default.readFileSync(path_1.default.join(path_1.default.dirname('data'), 'data', 'notes.json'), 'utf-8')).Notes,
     setData: function (newData) {
         fs_1.default.writeFileSync(path_1.default.join(path_1.default.dirname('data'), 'data', 'notes.json'), JSON.stringify({ Notes: newData }), 'utf-8');
+        notes.data = newData;
     },
 };
 const getAllNotes = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -48,14 +49,14 @@ const createNote = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     if (!((_f = req === null || req === void 0 ? void 0 : req.body) === null || _f === void 0 ? void 0 : _f.title) && !((_g = req === null || req === void 0 ? void 0 : req.body) === null || _g === void 0 ? void 0 : _g.body))
         return res.status(400).json({ message: 'No data was given' });
     const newNoteData = {
-        id: (0, uuid_1.v1)(),
+        id: (0, uuid_1.v4)(),
         title: (_h = req === null || req === void 0 ? void 0 : req.body) === null || _h === void 0 ? void 0 : _h.title,
         body: (_j = req === null || req === void 0 ? void 0 : req.body) === null || _j === void 0 ? void 0 : _j.body,
         postDatetime: (0, date_fns_1.format)(new Date(), DATE_FORMAT),
     };
     try {
         notes.setData([...notes.data, newNoteData]);
-        return res.sendStatus(201);
+        return res.status(201).json({ note: newNoteData });
     }
     catch (err) {
         return res.status(500).json({ message: `Failed to create note: ${err.message}` });
@@ -63,24 +64,22 @@ const createNote = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
 });
 exports.createNote = createNote;
 const updateNote = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    var _k, _l, _m, _o, _p, _q, _r, _s, _t, _u, _v;
-    if (!((_k = req === null || req === void 0 ? void 0 : req.body) === null || _k === void 0 ? void 0 : _k.title) || !((_l = req === null || req === void 0 ? void 0 : req.body) === null || _l === void 0 ? void 0 : _l.body))
-        return res.status(400).json({ message: 'No data was given' });
-    if (!((_m = req === null || req === void 0 ? void 0 : req.body) === null || _m === void 0 ? void 0 : _m.id) && !((_o = req === null || req === void 0 ? void 0 : req.params) === null || _o === void 0 ? void 0 : _o.id)) {
+    var _k, _l, _m, _o, _p, _q, _r, _s, _t;
+    if (!((_k = req === null || req === void 0 ? void 0 : req.body) === null || _k === void 0 ? void 0 : _k.id) && !((_l = req === null || req === void 0 ? void 0 : req.params) === null || _l === void 0 ? void 0 : _l.id)) {
         return res.status(400).json({ message: 'No ID was given' });
     }
-    else if (((_p = req === null || req === void 0 ? void 0 : req.body) === null || _p === void 0 ? void 0 : _p.id) && ((_q = req === null || req === void 0 ? void 0 : req.params) === null || _q === void 0 ? void 0 : _q.id) && req.body.id !== req.params.id) {
+    else if (((_m = req === null || req === void 0 ? void 0 : req.body) === null || _m === void 0 ? void 0 : _m.id) && ((_o = req === null || req === void 0 ? void 0 : req.params) === null || _o === void 0 ? void 0 : _o.id) && req.body.id !== req.params.id) {
         return res.status(400).json({ message: 'Two different IDs were given' });
     }
-    const id = (_r = req.params.id) !== null && _r !== void 0 ? _r : req.body.id;
+    const id = (_p = req.params.id) !== null && _p !== void 0 ? _p : req.body.id;
     const note = notes.data.find((note) => note.id === id);
     if (!note)
         return res.status(404).json({ message: 'No note corresponds to the given ID' });
     else {
         const newData = {
             id,
-            title: (_t = (_s = req === null || req === void 0 ? void 0 : req.body) === null || _s === void 0 ? void 0 : _s.title) !== null && _t !== void 0 ? _t : note === null || note === void 0 ? void 0 : note.title,
-            body: (_v = (_u = req === null || req === void 0 ? void 0 : req.body) === null || _u === void 0 ? void 0 : _u.body) !== null && _v !== void 0 ? _v : note === null || note === void 0 ? void 0 : note.body,
+            title: (_r = (_q = req === null || req === void 0 ? void 0 : req.body) === null || _q === void 0 ? void 0 : _q.title) !== null && _r !== void 0 ? _r : note === null || note === void 0 ? void 0 : note.title,
+            body: (_t = (_s = req === null || req === void 0 ? void 0 : req.body) === null || _s === void 0 ? void 0 : _s.body) !== null && _t !== void 0 ? _t : note === null || note === void 0 ? void 0 : note.body,
             postDatetime: note === null || note === void 0 ? void 0 : note.postDatetime,
         };
         try {
@@ -94,14 +93,14 @@ const updateNote = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
 });
 exports.updateNote = updateNote;
 const deleteNote = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    var _w, _x, _y, _z, _0;
-    if (!((_w = req === null || req === void 0 ? void 0 : req.body) === null || _w === void 0 ? void 0 : _w.id) && !((_x = req === null || req === void 0 ? void 0 : req.params) === null || _x === void 0 ? void 0 : _x.id)) {
+    var _u, _v, _w, _x, _y;
+    if (!((_u = req === null || req === void 0 ? void 0 : req.body) === null || _u === void 0 ? void 0 : _u.id) && !((_v = req === null || req === void 0 ? void 0 : req.params) === null || _v === void 0 ? void 0 : _v.id)) {
         return res.status(400).json({ message: 'No ID was given' });
     }
-    else if (((_y = req === null || req === void 0 ? void 0 : req.body) === null || _y === void 0 ? void 0 : _y.id) && ((_z = req === null || req === void 0 ? void 0 : req.params) === null || _z === void 0 ? void 0 : _z.id) && req.body.id !== req.params.id) {
+    else if (((_w = req === null || req === void 0 ? void 0 : req.body) === null || _w === void 0 ? void 0 : _w.id) && ((_x = req === null || req === void 0 ? void 0 : req.params) === null || _x === void 0 ? void 0 : _x.id) && req.body.id !== req.params.id) {
         return res.status(400).json({ message: 'Two different IDs were given' });
     }
-    const id = (_0 = req.params.id) !== null && _0 !== void 0 ? _0 : req.body.id;
+    const id = (_y = req.params.id) !== null && _y !== void 0 ? _y : req.body.id;
     const note = notes.data.find((note) => note.id === id);
     if (!note)
         return res.status(404).json({ message: 'No note corresponds to the given ID' });
