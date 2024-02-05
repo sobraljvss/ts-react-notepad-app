@@ -8,13 +8,14 @@ const Layout = () => {
 		<>
 			<header>
 				<h1>Notepad App</h1>
-				<button onClick={() => navigateTo('/notes/new')}>+</button>
 			</header>
 			<main>
 				<Outlet />
 			</main>
 			<footer>
-				<p>{new Date().toDateString()}</p>
+				<button tabIndex={0} onClick={() => navigateTo('/notes/new')}>
+					+
+				</button>
 			</footer>
 		</>
 	);

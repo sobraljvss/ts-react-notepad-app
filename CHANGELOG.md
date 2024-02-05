@@ -5,9 +5,22 @@ All notable changes to this project will be documented in this file.
 ## [unreleased]
 
 -   List creator
--   Transitions
 -   Infinite scroll
--   Better style on buttons
+-   Transitions for smoother usage
+
+## v1.0.0 - 2024-02-04
+
+### Added
+
+-   Remaining style (including scrollbars and selections)
+-   Search mechanism
+-   More accessibility components (labels, placeholders, etc)
+-   Images and Usage in README.md
+
+### Updated
+
+-   Storage of datetime as the number of milliseconds from the epoch
+-   Sorting of notes from newest to oldest
 
 ## v0.3.0 - 2024-01-23
 

@@ -11,27 +11,15 @@ header {
     background-color: #3C373B;
 }
 
-header > button {
-    position: absolute;
-    right: 10%;
-
-    border: none;
-    background-color: transparent;
-    color: white;
-
-    font-size: 4em;
-
-    cursor: pointer;
-}
-
 main {
-    height: calc(100vh - 20%);
     padding: 20px;
+    height: calc(100vh - 20%);
 
     background: linear-gradient(to top right, #454144, #6f686d);
 
     overflow-y: auto;
-    scrollbar-track-color: aqua;
+
+    scrollbar-color: #6f686d #454144;
 }
 
 footer {
@@ -47,10 +35,68 @@ footer {
     background-color: #3C373B;
 }
 
+footer > button {
+    padding: 5px;
+    height: 80%;
+    aspect-ratio: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: transparent;
+    border-radius: 100%;
+    background-color: white;
+    box-shadow: inset -4px -4px 3px 2px gray;
+
+    color: inherit;
+    font-size: 4em;
+
+    cursor: pointer;
+}
+
 header > h1, footer > p {
     color: white;
 }
 
 .error {
+    height: 5%;
+    width: calc(100% - 40px);
+
+    position: fixed;
+    bottom: 10%;
+
+    background-color: #3C373B;
+    border-radius: 10px;
+
     color: red;
+    font-size: calc(1em + 1vw);
+    text-align: center;
+}
+
+.return-link {
+    height: 5%;
+
+    display: block;
+    position: relative;
+    bottom: 0;
+
+    color: white;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: calc(1em + 0.5vh + 0.5vw);
+}
+
+.return-link:visited {
+    color: white;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: lightgray;
+}
+
+p::selection, input::selection, textarea::selection, h1::selection, h2::selection {
+    background-color: #3C373B;
+    color: white;
 }

@@ -1,8 +1,8 @@
 .note-card {
     margin: 10px;
     padding: 10px;
-    height: 120px;
-    width: 200px;
+    width: 240px;
+    aspect-ratio: 5/3;
 
     border: 2px solid #2D2311;
     border-radius: 20px 0;
@@ -13,10 +13,10 @@
 }
 
 li > .title {
-    font-size: calc(1em + 20%);
+    font-size: calc(0.5em + 100%);
     font-weight: 700;
 }
 
 li > .datetime {
-    font-size: calc(0.5em + 33%);
+    font-size: calc(0.5em + 50%);
 }

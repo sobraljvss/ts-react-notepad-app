@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 .env
+client/src/hooks
 
 # Editor directories and files
 .vscode/*

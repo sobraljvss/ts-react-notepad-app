@@ -1,6 +1,17 @@
+.note-page {
+    height: 90%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
 .expanded-note {
     padding: 10px;
     height: 80%;
+    max-width: 768px;
+    width: 100%;
 
     background: none;
     background-color: #987C17;
@@ -8,20 +19,58 @@
     border: 2px solid #2D2311;
     border-radius: 20px 0;
     box-shadow: 10px 10px black, inset 10px 10px 30px #caa727;
+
+    scrollbar-color: #2D2311 #987C17;
 }
 
 .note-head {
-    height: 20%;
+    height: 25%;
 }
 
 .note-body {
-    height: 80%;
+    height: 75%;
 
     white-space: pre-wrap;
+    word-break: keep-all;
     overflow-y: auto;
+
+    font-size: calc(1em + 0.5vw);
 }
 
 h2 {
-    font-size: calc(1em + 2vh);
+    display: block;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    font-size: calc(2em + 1vw);
     font-weight: 700;
+}
+
+h2:focus {
+    text-overflow: clip;
+    overflow-x: auto;
+}
+
+.note-page-options {
+    height: 10%;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-around;
+}
+
+.note-page-options > button {
+    height: 100%;
+    max-width: 300px;
+    width: 30%;
+
+    border: transparent;
+    border-radius: 10px;
+
+    color: inherit;
+    font-family: inherit;
+    font-weight: 500;
+    font-size: calc(1em + 1vw);
 }

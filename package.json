@@ -1,6 +1,6 @@
 {
 	"name": "ts-react-notepad-app",
-	"version": "0.3.0",
+	"version": "1.0.0",
 	"description": "A simple notepad app made with React and TypeScript",
 	"scripts": {
 		"dev": "concurrently \"npm --prefix \"./server\" run dev\" \"npm --prefix \"./client\" run dev\""
@@ -16,6 +16,7 @@
 	},
 	"homepage": "https://github.com/sobraljvss/ts-react-notepad-app#readme",
 	"devDependencies": {
+		"@types/node": "^20.11.16",
 		"concurrently": "^8.2.2"
 	}
 }
